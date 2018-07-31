@@ -4,6 +4,7 @@ my $fastq1 = shift;
 my $fastq2 = shift;
 my $prefix = shift;
 my $output_Path = shift;
+my $threads = shift
 
 my $fasta_of_ref_momps_2_regen = "Ref_Paris_mompS_2.fasta";
 my $log = $output_Path.$prefix.".log";
@@ -30,7 +31,7 @@ my ($freebayse_path) = $config =~ /freebayse_path\s*=\s*(.*?)\n/;
 
 
 #Mapping fastq paired file to mompS_2_regen by bwa
-`$bwa_path/bwa mem Ref_Paris_mompS_2.fasta -R '\@RG\tID:group1\tSM:sample81\tPL:illumina\tLB:Technion\tPU:unit1'  $fastq1 $fastq2 > $output_Path$output_sam`;
+`$bwa_path/bwa mem -t $threads Ref_Paris_mompS_2.fasta -R '\@RG\tID:group1\tSM:sample81\tPL:illumina\tLB:Technion\tPU:unit1'  $fastq1 $fastq2 > $output_Path$output_sam`;
 #reheater sam file
 my $grep_io = qx(grep -v '\@PG' $output_Path$output_sam > $output_Path$output_sam_header_fix);
 

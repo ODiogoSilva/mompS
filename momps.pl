@@ -8,6 +8,7 @@ GetOptions
 	"p=s"=>\$prefix,# prefix
 	"o=s"=>\$outputpath,# output path
 	"a=s"=>\$assembly_fasta # asembly genome 
+	"t=s"=>\$threads # Threads for bwa
 	);
 #This script combine the mompS pipe and the MLST of the rest 6 genes
 $outputpath = $outputpath."/";
@@ -29,7 +30,7 @@ my $config = <CONFIG>;
 my ($blast_path) = $config =~ /blast_path\s*=\s*(.*?)\n/;
 open (RES, ">$log") or die;
 #call the mompS pipe
-`perl mompS_2_pipe.pl $reads_F $reads_R $prefix $outputpath`;
+`perl mompS_2_pipe.pl $reads_F $reads_R $prefix $outputpath $threads`;
 open (mompS,$outputpath.$prefix.".consensus.ST_MompS_res.txt") or die;
 local $/;
 my $mompS_res = <mompS>;
