@@ -7,7 +7,7 @@ GetOptions
 	"r=s"=>\$reads_R,# reverse fastq file name
 	"p=s"=>\$prefix,# prefix
 	"o=s"=>\$outputpath,# output path
-	"a=s"=>\$assembly_fasta # asembly genome 
+	"a=s"=>\$assembly_fasta, # asembly genome 
 	"t=s"=>\$threads # Threads for bwa
 	);
 #This script combine the mompS pipe and the MLST of the rest 6 genes
