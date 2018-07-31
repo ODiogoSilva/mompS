@@ -4,7 +4,7 @@ my $fastq1 = shift;
 my $fastq2 = shift;
 my $prefix = shift;
 my $output_Path = shift;
-my $threads = shift
+my $threads = shift;
 
 my $fasta_of_ref_momps_2_regen = "Ref_Paris_mompS_2.fasta";
 my $log = $output_Path.$prefix.".log";
