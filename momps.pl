@@ -35,6 +35,9 @@ open (mompS,$outputpath.$prefix.".consensus.ST_MompS_res.txt") or die;
 local $/;
 my $mompS_res = <mompS>;
 my ($mompS_ST) = $mompS_res =~ /mompS ST number: (\d+)/;
+if ( not $mompS_ST ) {
+	$mompS_ST = "ND"
+}
 print RES "$mompS_ST\n";
 
 #make blastDB for assembly_fasta
